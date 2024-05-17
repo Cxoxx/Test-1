@@ -1,40 +1,64 @@
-#parent class
 class Person:
-    def __init__(self, name, age, address):
+    def __init__(self, name, age, cid):
         self.name = name
         self.age = age
-        self.address = address
+        self.cid = cid
 
-    def get_details(self):
-        return f"Name: {self.name}, Age: {self.age}, Address: {self.address}"
+    def walk(self):
+        print(f"{self.name} is walking.")
+    
+    def talk(self):
+        print(f"{self.name} is talking.")
+    
+    def eat(self):
+        print(f"{self.name} is eating.")
+    
+    def sleep(self):
+        print(f"{self.name} is sleeping.")
 
-    def speak(self):
-        return f"{self.name} says: Hello!"
-
-#child class:student
-class Student(Person):
-    def __init__(self, name, age, address, student_id, major):
-        super().__init__(name, age, address)
-        self.student_id = student_id
-        self.major = major
-
-    def get_details(self):
-        parent_details = super().get_details()
-        return f"{parent_details}, Student ID: {self.student_id}, Major: {self.major}"
-
-    def study(self):
-        return f"{self.name} is studying {self.major}."
-
-#child class:Teacher
 class Teacher(Person):
-    def __init__(self, name, age, address, employee_id, subject):
-        super().__init__(name, age, address)
-        self.employee_id = employee_id
+    def __init__(self, name, age, cid, subject, salary, department, designation):
+        super().__init__(name, age, cid)
         self.subject = subject
-
-    def get_details(self):
-        parent_details = super().get_details()
-        return f"{parent_details}, Employee ID: {self.employee_id}, Subject: {self.subject}"
-
+        self.salary = salary
+        self.department = department
+        self.designation = designation
+    
     def teach(self):
-        return f"{self.name} is teaching {self.subject}."
+        print(f"{self.name} is teaching {self.subject}.")
+    
+    def grade_students(self):
+        print(f"{self.name} is grading students.")
+    
+    def attend_meeting(self):
+        print(f"{self.name} is attending a meeting.")
+
+class Student(Person):
+    def __init__(self, name, age, cid, student_id, course, year, gpa):
+        super().__init__(name, age, cid)
+        self.student_id = student_id
+        self.course = course
+        self.year = year
+        self.gpa = gpa
+    
+    def study(self):
+        print(f"{self.name} is studying.")
+    
+    def attend_class(self):
+        print(f"{self.name} is attending class.")
+    
+    def write_exam(self):
+        print(f"{self.name} is writing an exam.")
+
+# Create instances
+teacher = Teacher("Mr. Pema", 40, "CID1160400666", "Mathematics", 700000, "CSF101", "Senior Lecturer")
+student = Student("Mr. Norbu", 20, "CID1160400888", "STU123", "Computer Science", 2, 3.5)
+
+# Call methods
+teacher.walk()
+teacher.talk()
+teacher.teach()
+
+student.walk()
+student.talk()
+student.study()
